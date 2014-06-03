@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[Ethical Hacker]]></title>
   <link href="http://krishnaarava.github.io/atom.xml" rel="self"/>
   <link href="http://krishnaarava.github.io/"/>
-  <updated>2014-06-03T16:50:40+05:30</updated>
+  <updated>2014-06-03T16:54:17+05:30</updated>
   <id>http://krishnaarava.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Krishna Arava]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
