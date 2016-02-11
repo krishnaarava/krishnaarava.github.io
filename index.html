@@ -9,7 +9,11 @@
   <meta name="author" content="Krishna Arava">
 
   
-  <meta name="description" content="In a recent interview that I attended, interviewer asked me if I knew the design to configure web application with concurrent session management i.e &hellip;">
+  <meta name="description" content=" layout: post
+title: &ldquo;Deploying Spark Cluster with Docker&rdquo;
+date: 2016-02-08 21:17:29 +0530
+comments: true categories: Here is the cluster
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,13 +22,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://krishnaarava.github.io">
+  <link rel="canonical" href="http://krishnaarava.github.io/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Ethical Hacker" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -50,7 +54,7 @@
   
 <form action="https://www.google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:krishnaarava.github.io" />
+    <input type="hidden" name="sitesearch" value="krishnaarava.github.io">
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -71,7 +75,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/12/23/spring-security-concurrent-session/">Spring Security - Concurrent Session Management</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/02/08/deploying-spark-cluster-with-docker/">Deploying Spark Cluster With Docker</a></h1>
     
     
       <p class="meta">
@@ -80,384 +84,23 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2013-12-23T16:31:00+05:30" pubdate data-updated="true">Dec 23<span>rd</span>, 2013</time>
+<time class='entry-date' datetime='2016-02-08T00:00:00+05:30'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><div class='post'>
-<div dir="ltr" style="text-align: left;" trbidi="on"><span style="font-family: Verdana,sans-serif;">In a recent interview that I attended, interviewer asked me if I knew the design to configure web application with concurrent session management i.e. if user logs in to the application his previous session (if any and alive) are terminated. While my answer was quick that one can manage state details of users using Session Management and database table field to determine if user is currently logged in / not.&nbsp;</span><br /><br /><span style="font-family: Verdana,sans-serif;">While the above mentioned is pretty easy to implement, things get complicated if user accidentally closes the application without logging out. Fortunately we have easy solution to implement using Spring Security&#8217;s Concurrent Session Management.</span><br /><br /><span style="font-family: Verdana,sans-serif;"><a href="http://docs.spring.io/spring-security/site/docs/3.2.0.RC2/apidocs/org/springframework/security/web/authentication/session/ConcurrentSessionControlAuthenticationStrategy.html"><b>ConcurrentSessionControlAuthenticationStrategy</b></a> allows a configurable maxSessions attribute and here we are setting it to 1. Below is the gist of the core Spring Security Config that one should use</span><br /><br /><span style="font-size: small;"><span style="font-family: Times,&quot;Times New Roman&quot;,serif;">&lt;bean class=&#8221;org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy&#8221;&gt; 			          &lt;constructor-arg ref=&#8221;sessionRegistry&#8221;/&gt; 			          <b>&lt;property name=&#8221;maximumSessions&#8221; value=&#8221;1&#8221; /&gt;</b>			      &lt;/bean&gt;</span></span><br /><br /><span style="font-family: Verdana,sans-serif;">The sample project is available <a href="https://github.com/krisharava/ConcurrentSessionManagement-Example">on Github</a> </span><br /><br /><span style="font-family: Verdana,sans-serif;">Reference: </span><br /><span style="font-family: Verdana,sans-serif;">http://docs.spring.io/spring-security/site/docs/3.2.0.RC2/reference/htmlsingle/#session-mgmt </span></div></div>
-</div>
-  
-  
+  <div class="entry-content"><hr />
 
+<p>layout: post
+title: &ldquo;Deploying Spark Cluster with Docker&rdquo;
+date: 2016-02-08 21:17:29 +0530
+comments: true</p>
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/09/28/how-to-apply-for-new-voter-id-card/">How to Apply for New Voter Id Card</a></h1>
-    
-    
-      <p class="meta">
-        
+<h2>categories: </h2>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-28T08:46:00+05:30" pubdate data-updated="true">Sep 28<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<div dir="ltr" style="text-align: left;" trbidi="on">Here is your chance to apply for new Voter Id Card, enroll your name in Voters list and participate in the upcoming Indian General Elections slated for next year April 2014, includes step by step instructions and FAQ related to Voter Id Cards. The whole process for an Voter Card to be issued takes a month to complete.<br /><br /><a href="http://www.allindiadaily.com/2013/07/apply-for-voter-id-online.html">http://www.allindiadaily.com/2013/07/apply-for-voter-id-online.html</a> <br /><br />I was able to complete and submit the application in under 30 minutes.(The application flow was slightly different from what was shown in the link <a href="http://www.ceoandhra.nic.in/ceonew/home.aspx">http://www.ceoandhra.nic.in/ceonew/home.aspx</a> -&gt; E-Registration-&gt;Form-6)<br /><br />If you are from Andhra Pradesh, one can submit the application in ESeva / MeSeva centers too.<br /><br />Please do share it with your friends.</div></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/09/22/quickoffice-free-for-android-and-ios/">Quickoffice Free for Android and iOS Devices</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-22T07:43:00+05:30" pubdate data-updated="true">Sep 22<span>nd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<div dir="ltr" style="text-align: left;" trbidi="on">Google makes Quickoffice free, a tool to view and edit office documents.&nbsp; <br /><br />The announcement is mentioned here<br /><a href="http://googleenterprise.blogspot.com/2013/09/freeing-quickoffice-for-everyone.html">http://googleenterprise.blogspot.com/2013/09/freeing-quickoffice-for-everyone.html</a><br /><br />Install from Google Play - <a href="https://play.google.com/store/apps/details?id=com.quickoffice.android">https://play.google.com/store/apps/details?id=com.quickoffice.android</a><br /><br />Install for iOS Devices - <a href="https://itunes.apple.com/us/artist/quickoffice-inc./id294258240?mt=8">iTunes</a><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://rack.1.mshcdn.com/media/ZgkyMDEzLzA4LzIzLzUwL3N0ZXZlYmFsbG1lLmFiYzViLmpwZwpwCXRodW1iCTk1MHg1MzQjCmUJanBn/1f7015b8/090/steve-ballmer.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="223" src="http://rack.1.mshcdn.com/media/ZgkyMDEzLzA4LzIzLzUwL3N0ZXZlYmFsbG1lLmFiYzViLmpwZwpwCXRodW1iCTk1MHg1MzQjCmUJanBn/1f7015b8/090/steve-ballmer.jpg" width="400" /></a></div><br /></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/22/my-thoughts-on-ipl-mess/">My Thoughts on IPL Mess</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-22T00:31:00+05:30" pubdate data-updated="true">May 22<span>nd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<div dir="ltr" style="text-align: left;" trbidi="on">I havent spoken out for long time and wanted to share another perspective of the IPL mess.<br />When the first news came out, I was heartbroken to watch talented young player like Sreesanth went for the trap.<br /><br />Arjuna Ranathunga rightly pointed that IPL is monster that&#8217;s ruining Indian Cricket.<br />After matches IPL Parties - boozing, girls and sex are the most common things cricketers do after the games.  (And of course they get a chance our bookies too here). Like a movie story, this monster full of creeps from Bollywood and Politicians who have no interest in holding the respect for the game.<br /><br />The Gentleman Game now is run by gamblers with the patronage of political parties both the congress and opposition. This investigation is a mere eyewash and will die down soon (Public has short memory, remember Coal Scam !!).<br /><br />Lets come back to the point when this all started, were Rajasthan Royals management not aware of the antics of a person like Sreesanth and Chandila? Apparently a party was thrown on April 6th by a bookie in Gurgaon and Chandila attended the party.<br /><br />Now would you be a owner of 130 million dollars worth club not keep a watch on team players. Otherwise Shilpa Shetty and other RR team management be so dumb they must be thinking &#8220;Oh Chandila has gone to Guragon to attend Bookie&#8217;s Party and we will play clean&#8221; oh thats great. The first one to be held responsible should be team owners and management, someone must be knowing what was going to happen.<br /><br />Second - The legends of the game (those who are now working as commentators, board members, selectors) have failed to take BCCI head on. They are too guilty, they gladly accepted lucrative offers and be part of the corrupt system.<br /><br />BCCI know they will thrive to make enough money to spend on parties at Five Star Hotels, special charted flights. But morality and spirit of the game have hit new low and there is no recovering of it from this point, unless miracle happens.</div></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/11/02/if-you-happened-to-be-in-chennaiindia/">Pay Toll to Get on to This HELL WAY (WTF)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-02T10:02:00+05:30" pubdate data-updated="true">Nov 2<span>nd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-If you happened to be in Chennai,India do not ever get on to IT express corridor way. <br/><br/>Unfortunately I was to taking it everyday to reach office. Not just me, an estimated 2 lakh people take it everyday to reach their destination. This expressway is the only way to reach SIPCOT SEZ (special economic zone / IT hub. Believe it or not this place was once dump yard .. yak!) This expressway is dirty stretch of 20 Kms from Thirvanmayur to Siruseri, with incomplete roads and footpaths.  <br/><br/>This dirty stretch has incomplete encroached footpaths, roads layed without any special U turn approach roads and constant straying of cows and dogs<br/><br/>Yet to use this way four wheeler owner needs to pay 35 rupees for using this way. It kind of shows how much poor governance is part of bureaucratic system in India.</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/19/i-met-some-of-my-buddies-yesterday/">Are You Not Happy With Your IT Job?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-19T03:43:00+05:30" pubdate data-updated="true">Feb 19<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-I met some of my buddies yesterday. And one thing that is often common in conversations in these meetings is everyone tell&#8217;s me about how much their job sucks in Indian IT consultancy companies. Most of these companies have poor standards, ethics and ridiculous work cultures. These so called professionals jobs are mere low end support / maintenance related roles. And <a href="http://www.google.com/search?sourceid=chrome&amp;client=ubuntu&amp;channel=cs&amp;ie=UTF-8&amp;q=why+enterprise+software+sucks%3F">enterprise software sucks</a>. <br/><br/>On the other side companies like Apple and Google have given power to developers. Developers can now write and monetize applications using <a href="https://market.android.com">Android Market</a>, <a href="https://chrome.google.com/webstore">Chrome Web store</a>, <a href="http://www.apple.com/iphone/apps-for-iphone/">Apple App Store</a>. Other places where developers / consultants can look for work on is <a href="freelancer.com">freelancer.com</a>. These are just few instances, there are millions of places on the internet where we can look for work. <br/><br/>I work for another Indian IT consultancy but I do enjoy technology as much as I can. I work most of free time on the internet. In the past I have done lot of work like building websites, jailbreaking iphones &amp; android phones, learning new concepts about networking and security. I have written my own operating system based on linux. My ambition is to join Google one day. <br/><br/>Here is how I will break it down learn something new:<br/><br/>1) The best way to start is to start <br/><br/>Yes, start with something you thought was interesting. It need not be about programming or something related to you current role. It could be something that you always baffled about. Like how does an operating system work /  What is hacking / How does internet work / What technologies is facebook using to support 600 million users?<br/><br/>Internet has all the answers. So keep browsing till you find answers (get a smartphone to browse the internet, it is very handy and productive). This will help you find to narrow down to your interests.<br/><br/>2) Choose your interest<br/><br/>Talk to your friends / colleagues to discuss about your new interests. They can help you choose and narrow down your options. Also you will get an insight into career&#8217;s that are flourishing. <br/><br/>3) Plan for a course<br/><br/>While I dont recommend to going back to College / special tutorial classes, lectures such as <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/video-lectures/">these</a> are available online. So use <a href="http://video.google.com">google search</a> to find lectures. Or borrow / rent books. Prepare a scheduled plan for your course.<br/><br/>You need to have strong will to stick to implement the plan. But this course will surely help you to learn and enjoy technology. Technology is fun for most home based hackers (I am one such). In due course it can be eventually turned into full time career. For one to become successful it takes years, so be patient my friend things will not happen overnight. <br/><br/>I can quote number of CEO&#8217;s of startup in Silicon valley who have switched jobs and followed their interests / passion to become successful (<a href="http://news.ycombinator.com/item?id=2222522">like this one</a>).<br/><br/>So best of luck and share any information in comments below this post.</div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>Lakshmi</div>
-<div class='content'>
-Hey Chaitanya&#8230;.nice article!!!!</div>
-</div>
-<div class='comment'>
-<div class='author'>Druthi</div>
-<div class='content'>
-Loved your posting and the way you keep up your interest!!! all the best with your future endeavors &#8230;. Its a quest for self satisfaction and it should take time&#8230;.lekapothe em maza kada :)</div>
-</div>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/01/13/new-free-android-app-from-google-google/">Google Translate Converts Real Time Speech</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-13T23:12:00+05:30" pubdate data-updated="true">Jan 13<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<div dir="ltr" style="text-align: left;" trbidi="on">The new free Android app from Google - Google Translate (requires android 2.1 or greater version) is available for download from Android Market. It converts speech in realtime and it implies that it can act as a translator. <br /><br />Check out the below video.<br /><iframe width="560" height="315" src="http://www.youtube.com/embed/oyRQnflIv6Y" frameborder="0" allowfullscreen></iframe><br /><br /></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/01/07/i-have-really-enjoyed-using-youtube/">Youtube Remote Is Cool</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-07T01:04:00+05:30" pubdate data-updated="true">Jan 7<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-I have really enjoyed using Youtube Remote on my G2. Its so cool &#8230;<br/><br/>Check this video to understand what I mean<br/><br/><iframe width="560" height="315" src="http://www.youtube.com/embed/txIPVu6yngQ" frameborder="0" allowfullscreen></iframe></div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>Srinivas Jayaram</div>
-<div class='content'>
-This is so cool &#8230; I love it</div>
-</div>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/03/07/mark-your-calendar-and-bookmark-this/">IPL 3 Starts Friday and Is on Youtube</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-07T01:36:00+05:30" pubdate data-updated="true">Mar 7<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Mark your calendar and bookmark this URL. IPL season 3 starts Friday March 12, 2010 and will be live on Youtube at <a href="http://youtube.com/ipl">http://youtube.com/ipl</a></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/02/13/i-was-so-much-mad-about-this-website/">Oh simplytelangana.com Admin Owns simplyandhra.com</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-02-13T03:15:00+05:30" pubdate data-updated="true">Feb 13<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-I was so much mad about this website simplytelangana.com. Their articles were riducles. So I just checked who is owing the website. It turns out the administrator also owned the website simplyandhra.com. <br /><br />See the below details:<br /><br /><a href="http://serversiders.com/simplytelangana.com">http://serversiders.com/simplytelangana.com</a><br /><br />Who is details:<br /><br /><a href="http://www.whois.net/whois/simplytelangana.com">http://www.whois.net/whois/simplytelangana.com</a><br /><a href="http://www.whois.net/whois/simplyandhra.com">http://www.whois.net/whois/simplyandhra.com</a><br /><br />Both the websites are registered with the same network 1and1.com<br />And when you try simplyandhra.com the domain is forwarding to simplytelangana.com. So it means the admin cashed on the fever of Telanagana and changed his initial website from simplyandhra.com to simplytelangana.com<br /><br />So who else cashed on Telangana fever? Let me know your opinion in comments</div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>Sharath</div>
-<div class='content'>
-Jai Telangana Bro&#8230; Don&#39;t humiliate the sentiment of Telangana Bro.. thats our RIGHT, thats our Sentiment, thats our MOTHER LAND, thats our Respect, thats OUR BREAD &amp; Butter&#8230; <br><br>Don&#39;t link Telangana with Business&#8230;.cheers <br>every body in the world can come down and live in telangana, no worries but if anybody try to humiliate &quot;KABARDAAR&quot;&#8230;<br><br>Jai Jai Telangana&#8230;</div>
-</div>
-</div>
+<p>Here is the cluster</p>
 </div>
   
   
@@ -466,8 +109,6 @@ Jai Telangana Bro&#8230; Don&#39;t humiliate the sentiment of Telangana Bro.. th
     </article>
   
   <div class="pagination">
-    
-      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -480,26 +121,39 @@ Jai Telangana Bro&#8230; Don&#39;t humiliate the sentiment of Telangana Bro.. th
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/12/23/spring-security-concurrent-session/">Spring Security - Concurrent Session Management</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/28/how-to-apply-for-new-voter-id-card/">How to Apply for New Voter Id Card</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/22/quickoffice-free-for-android-and-ios/">Quickoffice Free for Android and iOS Devices</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/05/22/my-thoughts-on-ipl-mess/">My Thoughts on IPL Mess</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/11/02/if-you-happened-to-be-in-chennaiindia/">Pay Toll to Get on to This HELL WAY (WTF)</a>
+        <a href="/blog/2016/02/08/deploying-spark-cluster-with-docker/">Deploying Spark Cluster With Docker</a>
       </li>
     
   </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/krish.arava@gmail.com">@krish.arava@gmail.com</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'krish.arava@gmail.com',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
 
 
@@ -512,7 +166,7 @@ Jai Telangana Bro&#8230; Don&#39;t humiliate the sentiment of Telangana Bro.. th
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Krishna Arava -
+  Copyright &copy; 2016 - Krishna Arava -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
