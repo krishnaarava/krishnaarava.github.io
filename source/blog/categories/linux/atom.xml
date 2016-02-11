@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linux | Ethical Hacker]]></title>
+  <link href="http://krishnaarava.github.io/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://krishnaarava.github.io/"/>
+  <updated>2014-06-03T17:09:57+05:30</updated>
+  <id>http://krishnaarava.github.io/</id>
+  <author>
+    <name><![CDATA[Krishna Arava]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[First Impressions - Google Chrome Browser for Linux]]></title>
+    <link href="http://krishnaarava.github.io/blog/2009/06/27/i-have-been-using-latest-chrome-browser/"/>
+    <updated>2009-06-27T21:38:00+05:30</updated>
+    <id>http://krishnaarava.github.io/blog/2009/06/27/i-have-been-using-latest-chrome-browser</id>
+    <content type="html"><![CDATA[<div class='post'>
+I have been using the latest chrome browser  for Linux (build 3.0.190.2) in Ubuntu 9.04 - Jaunty Jackalope for the last 24 hours.<br/><br/>Its really awesome fast. I feel its better than the Windows build (Performance on Windows doesnt really beat Linux).To feel it for yourselves checkout the latest build from the below links.<br/><ul><br/>  <li> (for 32-bit systems):<br/><a href="http://www.google.com/chrome/intl/en/eula_dev.html?dl=unstable_i386_deb">google-chrome-unstable_current_i386.deb</a></li><br/>  <li>(for 64-bit systems):<br/><a href="http://www.google.com/chrome/intl/en/eula_dev.html?dl=unstable_amd64_deb">google-chrome-unstable_current_amd64.deb</a></li><br/></ul><br/>And now the cons:<br/>1) Font rendering for some languages (Indian languages Hindi and Telugu) was missing. (below is screen shot)<br/><br/>2) Although a flash plug-in was installed in Linux on my laptop, was not able to use flash.  Reinstalling flash fixed the issue.<br/><br/>To conclude, although its a early dev release the build was really good. It was not as bad as I first thought and did not crash at any instance.</div>
+
+]]></content>
+  </entry>
+  
+</feed>
