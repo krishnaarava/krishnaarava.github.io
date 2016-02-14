@@ -8,16 +8,16 @@
   <title>Ethical Hacker</title>
   <meta name="author" content="Krishna Arava">
 
-  
+
   <meta name="description" content="In a recent interview that I attended, interviewer asked me if I knew the design to configure web application with concurrent session management i.e &hellip;">
-  
+
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
+
   <link rel="canonical" href="http://krishnaarava.github.io">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -30,31 +30,31 @@
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
-  
+
 
 </head>
 
 <body   >
   <header role="banner"><hgroup>
   <h1><a href="/">Ethical Hacker</a></h1>
-  
+
     <h2>Programmer, budding Entrepreneur, Father to little angel</h2>
-  
+
 </hgroup>
 
 </header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
+
 </ul>
-  
+
 <form action="https://www.google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:krishnaarava.github.io" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
-  
+
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
@@ -64,18 +64,91 @@
   <div id="main">
     <div id="content">
       <div class="blog-index">
-  
-  
-  
+
+      <article>
+
+      <header>
+
+          <h1 class="entry-title"><a href="/blog/2016/02/14/spring-boot-with-smartstack/">Spring Boot With Smartstack</a></h1>
+
+
+          <p class="meta">
+
+
+
+
+
+    <time class='entry-date' datetime='2016-02-14T09:50:43+05:30'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:50 am</span></time>
+
+          </p>
+
+      </header>
+
+
+      <div class="entry-content"><p>Service Discovery in Microservices Architecture is essential component and requires careful configuration. I am going to present one such solution based on Airbnb Smartstack and Spring Boot Webservice. You can read more about <a href="http://nerds.airbnb.com/smartstack-service-discovery-cloud/">Smartstack</a> on Airbnb blog</p>
+
+    <p>The core components of Smartstack are Nerve and Synapse. A architecture with Smartstack is given
+    <a href="http://techblog.newsweaver.com/microservices-service-discovery-with-smartstack-and-docker/">here</a></p>
+
+    <p>When using Spring Boot, Eureka serves as the Service Discovery component which requires configuration to be mentioned in dependent component. But Smartstack will help decouple this.</p>
+
+    <p>I am going to reuse the Docker images from newsweaver blog and use spring boot sample project (Caution : Do not use these Docker images in production, one should not rely on public docker images as most of them have vulnerabilities. Rebuild the docker images and use private registry).</p>
+
+    <p><strong>Start Zookeeper</strong></p>
+
+    <p>Smartstack relies on Zookeeper as a key-value store to keep track of all the discovery information. You can start use your own Zookeeper, or simply start it in container (and expose it to the host on port 2181):</p>
+
+    <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+    </pre></td><td class='code'><pre><code class=''><span class='line'>docker run -d -p 2181:2181 jplock/zookeeper</span></code></pre></td></tr></table></div></figure>
+
+
+    <p>Inspect the IP address of docker container using (docker inspect jplock/zookeeper)</p>
+
+    <p><strong>Connect to Zookeeper Docker container</strong></p>
+
+    <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+    </pre></td><td class='code'><pre><code class=''><span class='line'>sh bin/zkCli.sh -server &lt;ZOOKEEPER_IPADDRESS&gt;:2181</span></code></pre></td></tr></table></div></figure>
+
+
+    <p>shows lot of verbose and ends in a terminal</p>
+
+    <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+    <span class='line-number'>2</span>
+    </pre></td><td class='code'><pre><code class=''><span class='line'>[zkshell: 8] ls /
+    </span><span class='line'>[zookeeper]</span></code></pre></td></tr></table></div></figure>
+
+
+    <p><strong>Run the Spring Boot Webservice</strong></p>
+
+    <p>Now I am building Docker container of the sample Spring Boot Rest Webservice and running it, the code for the project is <a href="https://github.com/krishnaarava/smartstack-springboot-demo">here</a></p>
+
+    <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+    <span class='line-number'>2</span>
+    </pre></td><td class='code'><pre><code class=''><span class='line'>docker build -t krisharava/smartstack-springboot-demo
+    </span><span class='line'>docker run -d -e ZK_HOSTS=&lt;ZOOKEEPER_IPADDRESS&gt;:2181 krisharava/smartstack-springboot</span></code></pre></td></tr></table></div></figure>
+
+
+    <p>You should be now seeing the service under nerve</p>
+
+    <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+    <span class='line-number'>2</span>
+    </pre></td><td class='code'><pre><code class=''><span class='line'>[zk: 192.168.99.100:2181(CONNECTED) 0] ls /nerve/services/foo_service
+    </span><span class='line'>[foo_service_0000000001]</span></code></pre></td></tr></table></div></figure>
+
+    </div>
+
+    </article>
+
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2013/12/23/spring-security-concurrent-session/">Spring Security - Concurrent Session Management</a></h1>
-    
-    
+
+
       <p class="meta">
-        
 
 
 
@@ -84,35 +157,35 @@
 
 
 
-  
+
+
 
 
 <time datetime="2013-12-23T16:31:00+05:30" pubdate data-updated="true">Dec 23<span>rd</span>, 2013</time>
-        
+
       </p>
-    
+
   </header>
 
 
   <div class="entry-content"><div class='post'>
 <div dir="ltr" style="text-align: left;" trbidi="on"><span style="font-family: Verdana,sans-serif;">In a recent interview that I attended, interviewer asked me if I knew the design to configure web application with concurrent session management i.e. if user logs in to the application his previous session (if any and alive) are terminated. While my answer was quick that one can manage state details of users using Session Management and database table field to determine if user is currently logged in / not.&nbsp;</span><br /><br /><span style="font-family: Verdana,sans-serif;">While the above mentioned is pretty easy to implement, things get complicated if user accidentally closes the application without logging out. Fortunately we have easy solution to implement using Spring Security&#8217;s Concurrent Session Management.</span><br /><br /><span style="font-family: Verdana,sans-serif;"><a href="http://docs.spring.io/spring-security/site/docs/3.2.0.RC2/apidocs/org/springframework/security/web/authentication/session/ConcurrentSessionControlAuthenticationStrategy.html"><b>ConcurrentSessionControlAuthenticationStrategy</b></a> allows a configurable maxSessions attribute and here we are setting it to 1. Below is the gist of the core Spring Security Config that one should use</span><br /><br /><span style="font-size: small;"><span style="font-family: Times,&quot;Times New Roman&quot;,serif;">&lt;bean class=&#8221;org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy&#8221;&gt; 			          &lt;constructor-arg ref=&#8221;sessionRegistry&#8221;/&gt; 			          <b>&lt;property name=&#8221;maximumSessions&#8221; value=&#8221;1&#8221; /&gt;</b>			      &lt;/bean&gt;</span></span><br /><br /><span style="font-family: Verdana,sans-serif;">The sample project is available <a href="https://github.com/krisharava/ConcurrentSessionManagement-Example">on Github</a> </span><br /><br /><span style="font-family: Verdana,sans-serif;">Reference: </span><br /><span style="font-family: Verdana,sans-serif;">http://docs.spring.io/spring-security/site/docs/3.2.0.RC2/reference/htmlsingle/#session-mgmt </span></div></div>
 </div>
-  
-  
+
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2013/09/28/how-to-apply-for-new-voter-id-card/">How to Apply for New Voter Id Card</a></h1>
-    
-    
+
+
       <p class="meta">
-        
 
 
 
@@ -121,35 +194,35 @@
 
 
 
-  
+
+
 
 
 <time datetime="2013-09-28T08:46:00+05:30" pubdate data-updated="true">Sep 28<span>th</span>, 2013</time>
-        
+
       </p>
-    
+
   </header>
 
 
   <div class="entry-content"><div class='post'>
 <div dir="ltr" style="text-align: left;" trbidi="on">Here is your chance to apply for new Voter Id Card, enroll your name in Voters list and participate in the upcoming Indian General Elections slated for next year April 2014, includes step by step instructions and FAQ related to Voter Id Cards. The whole process for an Voter Card to be issued takes a month to complete.<br /><br /><a href="http://www.allindiadaily.com/2013/07/apply-for-voter-id-online.html">http://www.allindiadaily.com/2013/07/apply-for-voter-id-online.html</a> <br /><br />I was able to complete and submit the application in under 30 minutes.(The application flow was slightly different from what was shown in the link <a href="http://www.ceoandhra.nic.in/ceonew/home.aspx">http://www.ceoandhra.nic.in/ceonew/home.aspx</a> -&gt; E-Registration-&gt;Form-6)<br /><br />If you are from Andhra Pradesh, one can submit the application in ESeva / MeSeva centers too.<br /><br />Please do share it with your friends.</div></div>
 </div>
-  
-  
+
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2013/09/22/quickoffice-free-for-android-and-ios/">Quickoffice Free for Android and iOS Devices</a></h1>
-    
-    
+
+
       <p class="meta">
-        
 
 
 
@@ -158,35 +231,35 @@
 
 
 
-  
+
+
 
 
 <time datetime="2013-09-22T07:43:00+05:30" pubdate data-updated="true">Sep 22<span>nd</span>, 2013</time>
-        
+
       </p>
-    
+
   </header>
 
 
   <div class="entry-content"><div class='post'>
 <div dir="ltr" style="text-align: left;" trbidi="on">Google makes Quickoffice free, a tool to view and edit office documents.&nbsp; <br /><br />The announcement is mentioned here<br /><a href="http://googleenterprise.blogspot.com/2013/09/freeing-quickoffice-for-everyone.html">http://googleenterprise.blogspot.com/2013/09/freeing-quickoffice-for-everyone.html</a><br /><br />Install from Google Play - <a href="https://play.google.com/store/apps/details?id=com.quickoffice.android">https://play.google.com/store/apps/details?id=com.quickoffice.android</a><br /><br />Install for iOS Devices - <a href="https://itunes.apple.com/us/artist/quickoffice-inc./id294258240?mt=8">iTunes</a><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://rack.1.mshcdn.com/media/ZgkyMDEzLzA4LzIzLzUwL3N0ZXZlYmFsbG1lLmFiYzViLmpwZwpwCXRodW1iCTk1MHg1MzQjCmUJanBn/1f7015b8/090/steve-ballmer.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="223" src="http://rack.1.mshcdn.com/media/ZgkyMDEzLzA4LzIzLzUwL3N0ZXZlYmFsbG1lLmFiYzViLmpwZwpwCXRodW1iCTk1MHg1MzQjCmUJanBn/1f7015b8/090/steve-ballmer.jpg" width="400" /></a></div><br /></div></div>
 </div>
-  
-  
+
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2013/05/22/my-thoughts-on-ipl-mess/">My Thoughts on IPL Mess</a></h1>
-    
-    
+
+
       <p class="meta">
-        
 
 
 
@@ -195,35 +268,35 @@
 
 
 
-  
+
+
 
 
 <time datetime="2013-05-22T00:31:00+05:30" pubdate data-updated="true">May 22<span>nd</span>, 2013</time>
-        
+
       </p>
-    
+
   </header>
 
 
   <div class="entry-content"><div class='post'>
 <div dir="ltr" style="text-align: left;" trbidi="on">I havent spoken out for long time and wanted to share another perspective of the IPL mess.<br />When the first news came out, I was heartbroken to watch talented young player like Sreesanth went for the trap.<br /><br />Arjuna Ranathunga rightly pointed that IPL is monster that&#8217;s ruining Indian Cricket.<br />After matches IPL Parties - boozing, girls and sex are the most common things cricketers do after the games.  (And of course they get a chance our bookies too here). Like a movie story, this monster full of creeps from Bollywood and Politicians who have no interest in holding the respect for the game.<br /><br />The Gentleman Game now is run by gamblers with the patronage of political parties both the congress and opposition. This investigation is a mere eyewash and will die down soon (Public has short memory, remember Coal Scam !!).<br /><br />Lets come back to the point when this all started, were Rajasthan Royals management not aware of the antics of a person like Sreesanth and Chandila? Apparently a party was thrown on April 6th by a bookie in Gurgaon and Chandila attended the party.<br /><br />Now would you be a owner of 130 million dollars worth club not keep a watch on team players. Otherwise Shilpa Shetty and other RR team management be so dumb they must be thinking &#8220;Oh Chandila has gone to Guragon to attend Bookie&#8217;s Party and we will play clean&#8221; oh thats great. The first one to be held responsible should be team owners and management, someone must be knowing what was going to happen.<br /><br />Second - The legends of the game (those who are now working as commentators, board members, selectors) have failed to take BCCI head on. They are too guilty, they gladly accepted lucrative offers and be part of the corrupt system.<br /><br />BCCI know they will thrive to make enough money to spend on parties at Five Star Hotels, special charted flights. But morality and spirit of the game have hit new low and there is no recovering of it from this point, unless miracle happens.</div></div>
 </div>
-  
-  
+
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2011/11/02/if-you-happened-to-be-in-chennaiindia/">Pay Toll to Get on to This HELL WAY (WTF)</a></h1>
-    
-    
+
+
       <p class="meta">
-        
 
 
 
@@ -232,35 +305,35 @@
 
 
 
-  
+
+
 
 
 <time datetime="2011-11-02T10:02:00+05:30" pubdate data-updated="true">Nov 2<span>nd</span>, 2011</time>
-        
+
       </p>
-    
+
   </header>
 
 
   <div class="entry-content"><div class='post'>
 If you happened to be in Chennai,India do not ever get on to IT express corridor way. <br/><br/>Unfortunately I was to taking it everyday to reach office. Not just me, an estimated 2 lakh people take it everyday to reach their destination. This expressway is the only way to reach SIPCOT SEZ (special economic zone / IT hub. Believe it or not this place was once dump yard .. yak!) This expressway is dirty stretch of 20 Kms from Thirvanmayur to Siruseri, with incomplete roads and footpaths.  <br/><br/>This dirty stretch has incomplete encroached footpaths, roads layed without any special U turn approach roads and constant straying of cows and dogs<br/><br/>Yet to use this way four wheeler owner needs to pay 35 rupees for using this way. It kind of shows how much poor governance is part of bureaucratic system in India.</div>
 </div>
-  
-  
+
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2011/02/19/i-met-some-of-my-buddies-yesterday/">Are You Not Happy With Your IT Job?</a></h1>
-    
-    
+
+
       <p class="meta">
-        
 
 
 
@@ -269,13 +342,14 @@ If you happened to be in Chennai,India do not ever get on to IT express corridor
 
 
 
-  
+
+
 
 
 <time datetime="2011-02-19T03:43:00+05:30" pubdate data-updated="true">Feb 19<span>th</span>, 2011</time>
-        
+
       </p>
-    
+
   </header>
 
 
@@ -295,22 +369,21 @@ Loved your posting and the way you keep up your interest!!! all the best with yo
 </div>
 </div>
 </div>
-  
-  
+
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2011/01/13/new-free-android-app-from-google-google/">Google Translate Converts Real Time Speech</a></h1>
-    
-    
+
+
       <p class="meta">
-        
 
 
 
@@ -319,35 +392,35 @@ Loved your posting and the way you keep up your interest!!! all the best with yo
 
 
 
-  
+
+
 
 
 <time datetime="2011-01-13T23:12:00+05:30" pubdate data-updated="true">Jan 13<span>th</span>, 2011</time>
-        
+
       </p>
-    
+
   </header>
 
 
   <div class="entry-content"><div class='post'>
 <div dir="ltr" style="text-align: left;" trbidi="on">The new free Android app from Google - Google Translate (requires android 2.1 or greater version) is available for download from Android Market. It converts speech in realtime and it implies that it can act as a translator. <br /><br />Check out the below video.<br /><iframe width="560" height="315" src="http://www.youtube.com/embed/oyRQnflIv6Y" frameborder="0" allowfullscreen></iframe><br /><br /></div></div>
 </div>
-  
-  
+
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2011/01/07/i-have-really-enjoyed-using-youtube/">Youtube Remote Is Cool</a></h1>
-    
-    
+
+
       <p class="meta">
-        
 
 
 
@@ -356,13 +429,14 @@ Loved your posting and the way you keep up your interest!!! all the best with yo
 
 
 
-  
+
+
 
 
 <time datetime="2011-01-07T01:04:00+05:30" pubdate data-updated="true">Jan 7<span>th</span>, 2011</time>
-        
+
       </p>
-    
+
   </header>
 
 
@@ -377,22 +451,21 @@ This is so cool &#8230; I love it</div>
 </div>
 </div>
 </div>
-  
-  
+
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2010/03/07/mark-your-calendar-and-bookmark-this/">IPL 3 Starts Friday and Is on Youtube</a></h1>
-    
-    
+
+
       <p class="meta">
-        
 
 
 
@@ -401,35 +474,35 @@ This is so cool &#8230; I love it</div>
 
 
 
-  
+
+
 
 
 <time datetime="2010-03-07T01:36:00+05:30" pubdate data-updated="true">Mar 7<span>th</span>, 2010</time>
-        
+
       </p>
-    
+
   </header>
 
 
   <div class="entry-content"><div class='post'>
 Mark your calendar and bookmark this URL. IPL season 3 starts Friday March 12, 2010 and will be live on Youtube at <a href="http://youtube.com/ipl">http://youtube.com/ipl</a></div>
 </div>
-  
-  
+
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2010/02/13/i-was-so-much-mad-about-this-website/">Oh simplytelangana.com Admin Owns simplyandhra.com</a></h1>
-    
-    
+
+
       <p class="meta">
-        
 
 
 
@@ -438,13 +511,14 @@ Mark your calendar and bookmark this URL. IPL season 3 starts Friday March 12, 2
 
 
 
-  
+
+
 
 
 <time datetime="2010-02-13T03:15:00+05:30" pubdate data-updated="true">Feb 13<span>th</span>, 2010</time>
-        
+
       </p>
-    
+
   </header>
 
 
@@ -459,46 +533,50 @@ Jai Telangana Bro&#8230; Don&#39;t humiliate the sentiment of Telangana Bro.. th
 </div>
 </div>
 </div>
-  
-  
+
+
 
 
     </article>
-  
+
   <div class="pagination">
-    
+
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
-    
+
     <a href="/blog/archives">Blog Archives</a>
-    
+
   </div>
 </div>
 <aside class="sidebar">
-  
+
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
-    
+
+    <li class="post">
+      <a href="/blog/2016/02/14/spring-boot-with-smartstack/">Spring Boot With Smartstack</a>
+    </li>
+
       <li class="post">
         <a href="/blog/2013/12/23/spring-security-concurrent-session/">Spring Security - Concurrent Session Management</a>
       </li>
-    
+
       <li class="post">
         <a href="/blog/2013/09/28/how-to-apply-for-new-voter-id-card/">How to Apply for New Voter Id Card</a>
       </li>
-    
+
       <li class="post">
         <a href="/blog/2013/09/22/quickoffice-free-for-android-and-ios/">Quickoffice Free for Android and iOS Devices</a>
       </li>
-    
+
       <li class="post">
         <a href="/blog/2013/05/22/my-thoughts-on-ipl-mess/">My Thoughts on IPL Mess</a>
       </li>
-    
+
       <li class="post">
         <a href="/blog/2011/11/02/if-you-happened-to-be-in-chennaiindia/">Pay Toll to Get on to This HELL WAY (WTF)</a>
       </li>
-    
+
   </ul>
 </section>
 
@@ -506,7 +584,7 @@ Jai Telangana Bro&#8230; Don&#39;t humiliate the sentiment of Telangana Bro.. th
 
 
 
-  
+
 </aside>
 
     </div>
@@ -517,7 +595,7 @@ Jai Telangana Bro&#8230; Don&#39;t humiliate the sentiment of Telangana Bro.. th
 </p>
 
 </footer>
-  
+
 
 
 
